@@ -58,7 +58,7 @@ and in template
 
 you can append keywords with using a same command
 ```php
-SEO::addKeywords("append, to, the, keywords");
+SEO::setKeywords("append, to, the, keywords");
 {{# result in template is <meta name="keywords" content="foo, bar, foobar, append, to, the, keywords" /> #}}
 ```
 
