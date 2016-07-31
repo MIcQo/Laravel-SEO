@@ -41,7 +41,7 @@ namespace App\Http\Controllers;
 
 use SEO;
 
-classHomeController extends Controller {
+class HomeController extends Controller {
   public function index() {
     SEO::setKeywords("foo, bar, foobar");
   }
