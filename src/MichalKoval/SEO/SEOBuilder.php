@@ -7,6 +7,7 @@ class SEOBuilder implements SEOBuilderInterface {
     protected $description = "";
     protected $canonical = "";
     protected $metas = [];
+    protected $index = 0;
 
     protected $url = "";
     protected $path = "";
@@ -75,15 +76,32 @@ class SEOBuilder implements SEOBuilderInterface {
      * @return string
      */
     public function addMeta($name, $value = null, $type = "content") {
+        // [
+        //     [
+        //         'type' =>
+        //         'values' => [
+        //             'name' => 'value'
+        //         ]
+        //     ],
+        //     [
+        //         'type' =>
+        //         'values' => [
+        //             'name' => 'value'
+        //         ]
+        //     ],
+        // ]
+
         if(is_array($name)) {
-            $this->metas['type'] = $value;
+            $this->metas[$this->index]['type'] = $value;
             foreach($name as $k => $v) {
-                $this->metas['values'][$k] = $v;
+                $this->metas[$this->index]['values'][$k] = $v;
             }
         }else {
-            $this->metas['type'] = $type;
-            $this->metas['values'][$name] = $value;
+            $this->metas[$this->index]['type'] = $type;
+            $this->metas[$this->index]['values'][$name] = $value;
         }
+
+        $this->index += 1;
     }
 
     /**
@@ -100,13 +118,18 @@ class SEOBuilder implements SEOBuilderInterface {
         return $this->getMetaHTML("robots", "NOFOLLOW, NOINDEX");
     }
 
+
     /**
      * @return string
      */
     public function getMeta() {
-        if(!isset($this->metas['values'])) return "";
+        $output = "";
 
-        return $this->getMetaHTML($this->metas['values'], null, $this->metas['type']);
+        foreach($this->metas as $v) {
+            $output .= $this->getMetaHTML($v['values'], null, $v['type']);
+        }
+
+        return $output;
     }
 
     /**
