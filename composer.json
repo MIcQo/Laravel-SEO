@@ -1,0 +1,28 @@
+{
+    "name": "MichalKoval/Laravel-SEO",
+    "description": "A ultimate Laravel SEO Package",
+    "homepage": "",
+    "keywords": ["laravel", "sitemap", "robots", "meta", "generator"],
+    "license": "None",
+    "authors": [
+        {
+            "name": "Michal Koval",
+            "email": "micqogamer@gmail.com",
+            "role": "Developer",
+            "homepage": ""
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "illuminate/support": "~5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "MichalKoval\\SEO": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
