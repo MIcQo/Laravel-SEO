@@ -43,7 +43,7 @@ use SEO;
 
 classHomeController extends Controller {
   public function index() {
-    SEO::addKeywords("foo, bar, foobar");
+    SEO::setKeywords("foo, bar, foobar");
   }
 }
 ```
@@ -158,9 +158,11 @@ No-Index: /path
 public function setCanonical($canonical);
 
 /**
+ * <link rel="canonical" href="http://example.com/" />
  * @return string
  */
 public function getCanonical ();
+
 
 /**
  * @param $name
@@ -171,21 +173,28 @@ public function getCanonical ();
 public function addMeta($name, $value = null, $type = "content");
 
 /**
+ * <meta name="robots" content="FOLLOW, INDEX" />
  * @return string
  */
 public function enableRobots();
 
 /**
+ * <meta name="robots" content="NOFOLLOW, NOINDEX" />
  * @return string
  */
 public function disableRobots();
 
 /**
+ * <meta ... />
  * @return string
  */
 public function getMeta();
 
 /**
+ * Return OpenGraph params (Social)
+ * <meta property="og:image" />
+ * <meta property="og:url" />
+ * ...
  * @param string $site_name
  * @param string $title
  * @param string $desc
@@ -197,6 +206,7 @@ public function getMeta();
 public function getFacebookTags($site_name = "", $title = "", $desc = "", $type = "website", $image = "", $link = "");
 
 /**
+ * <meta name="description" content="..." />
  * @return string
  */
 public function getDescription();
@@ -207,6 +217,7 @@ public function getDescription();
 public function setDescription($desc);
 
 /**
+ * <meta name="keywords" content="..." />
  * @return mixed
  */
 public function getKeywords();
@@ -235,11 +246,13 @@ public function setPath($path);
 public function addItem($location, $lastmod = null, $priority = null, $changeFreq = null);
 
 /**
+ * Return XML Formated Sitemap
  * @return string
  */
 public function render();
 
 /**
+ * Return XML Formated Sitemap Index
  * @return string
  */
 public function renderIndex();
@@ -265,6 +278,7 @@ public function addSitemap($sitemap = null);
 public function addNoIndex($noIndex = null);
 
 /**
+ * Return robots.txt formatted string
  * @return string
  */
 public function getRobot();
