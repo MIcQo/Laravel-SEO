@@ -9,7 +9,7 @@ composer require michal-koval/laravel-seo
 
 or
 
-just add to composer.json (require-dev)
+just add to composer.json (require)
 ```
 "michal-koval/laravel-seo": "dev-master"
 ```
